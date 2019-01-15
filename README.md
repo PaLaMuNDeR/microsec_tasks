@@ -30,3 +30,6 @@ adapt the correct paths in it and then run
 Test-run it with
 `python3 task_2_client.py`
 
+# Task 3
+For task_3 first install `django`, `channels` and `redis`
+`pip3 install -r requirements.txt`

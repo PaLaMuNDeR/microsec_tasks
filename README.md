@@ -31,5 +31,12 @@ Test-run it with
 `python3 task_2_client.py`
 
 # Task 3
-For task_3 first install `django`, `channels` and `redis`
-`pip3 install -r requirements.txt`
+For task_3 I have used python 2.7 due to problems with the newer versions of Django and Channels
+The task is not 100% complete, but the data is visible and the sockets are up. I was not able to automate the 
+visualization, but it is around 95% complete.
+
+To install it run `pip install -r requirements.txt` and then `python manage.py mgirate && python manage.py runserver`
+The new data is added in the admin panel and is visualizing on `http://localhost:8000/temperature`
+
+# Task 4
+My view on the theoritical task is in the file of task_4.txt

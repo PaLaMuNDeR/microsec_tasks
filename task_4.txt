@@ -1,0 +1,14 @@
+I personally am a supporter of Containers as a solution to scalability. It resolves a lot of problems occurring with
+operating systems, migrations and even transferring projects from one service to another. Every project has to be seen
+n more details, in order to make decisions about changing the architecture, of course, but my general preference is
+Docker (Swarm) and Kubernetes. They are supported on all the major cloud providers and once created are easy to set up
+even on VPS. For each server could be declared the number of tasks to be running, so this is good solution for
+scalability.
+For what regards the different components of the system - I have experienced problems with MariaDB as MySQL databases
+do not run along very well with Django (not as much as Postgres for example). Abstracting myself from the technology,
+though, there are various solutions for data storage and buckets across the different cloud providers.
+
+Surely, AWS is a leader in its industry and the community supporting it is quite vast. From pricing point of view it is
+also competing well. Azure, Google Cloud and IBM are not yet at the level of services, according to various studies I
+had run for my previous projects. From both pricing and service point of view AWS is a definite leader, but not every
+project requires the same architecture and services, so it is surely not an universal solution.

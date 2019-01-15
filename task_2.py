@@ -13,8 +13,8 @@ from task_1 import crawler
     Test-run it with the task_2_client.py
 """
 
-HOST = 'ws://localhost:8000/temperature'
-PORT = 6379
+HOST = '127.0.0.1'
+PORT = 2999
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))

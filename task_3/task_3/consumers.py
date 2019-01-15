@@ -24,7 +24,7 @@ def ws_connect(message):
     log.debug('label=%s ',
         label)
 
-    Group('temperature', channel_layer=temperature.channel_layer).add(str(temperature.value))
+    Group('temperature', channel_layer=message.channel_layer).add(str(temperature.value))
 
     message.channel_session['temperature'] = temperature.value
 

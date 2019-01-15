@@ -9,7 +9,8 @@ Example: ./script.sh www.usec.io Ninja
 
 # Solution
 I have created a solution using Python instead in task_1.py
-I have assumed that the requested keywords should be part of the links or their related titles. Also a visited link should not be crawled again
+I have assumed that the requested keywords should be part of the links or their related titles. 
+Also a visited link should not be crawled again
 
 # Task 2
 Write a socket server program that listens on port 2999. Through this socket program you are able to
@@ -21,11 +22,11 @@ and execute the script on it.)
 
 # Solution
 To create a system service copy the task_2.service in
-/etc/systemd/system/task_2.service
+`/etc/systemd/system/task_2.service`
 
 adapt the correct paths in it and then run
-systemctl daemon-reload && systemctl enable task_2 && systemctl start task_2 --no-block
+`systemctl daemon-reload && systemctl enable task_2 && systemctl start task_2 --no-block`
 
 Test-run it with
-python3 task_2_client.py
+`python3 task_2_client.py`
 

@@ -1,0 +1,12 @@
+[Unit]
+Description=Task 2
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/martin/PycharmProjects/microsec_tasks/task_2.py
+WorkingDirectory=/home/martin/PycharmProjects/microsec_tasks/
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=sysinit.target

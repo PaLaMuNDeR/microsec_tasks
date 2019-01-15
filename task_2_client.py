@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-
 import socket
+
+""" A client to test task_2 """
 
 HOST = '127.0.0.1'
 PORT = 2999

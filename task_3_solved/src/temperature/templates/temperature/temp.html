@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Last temperatures</h3>
+<table id="values">
+<tbody>
+    <tr>
+        <th>Value</th>
+        <th>Updated at</th>
+    </tr>
+    {% for temp_object in object %}
+      <tr>
+        <td>{{ temp_object.value }}</td>
+        <td>{{ temp_object.timestamp }}</td>
+      </tr>
+    {% endfor %}
+      </tbody>
+{% endblock %}
+</table>
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js"></script>
+<script>
+
+var valuesHolder = $('#values')
+
+// websocket scripts
+console.log(window.location)
+var wsStart = 'ws://'
+if (location.protocol == 'https'){
+    wsStart = 'wss://'
+}
+var endpoint = 'ws://' + window.location.host + window.location.pathname
+var socket = new ReconnectingWebSocket(endpoint)
+
+socket.onmessage = function(e) {
+        var data = e.data;
+        console.log(data)
+        var valueData = JSON.parse(data)
+        valuesHolder.append("<tr><td>" + valueData.value + "(New)</td>\n<td>" + valueData.timestamp + "<---</td></tr>")
+    };
+
+socket.onopen = function(e){
+    console.log("message", e);
+}
+socket.onerror = function(e){
+    console.log("message", e);
+}
+socket.onclose = function(e){
+    console.log("message", e);
+}
+</script>
+{% endblock %}

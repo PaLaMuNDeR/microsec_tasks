@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Thread for {% if user != object.first %}{{ object.first }}{% else %}{{ object.second }}{% endif %}</h3>
+
+
+<form id='form' method='POST'> {% csrf_token %}
+{{form.as_p }}
+<input type='submit' class='btn btn-primary'/>
+</form>
+
+{% endblock %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js"></script>
+<script>
+
+var formData = $('#form')
+var valueInput = $('#id_value')
+
+// websocket scripts
+console.log(window.location)
+var wsStart = 'ws://'
+if (location.protocol == 'https'){
+    wsStart = 'wss://'
+}
+var endpoint = 'ws://' + window.location.host + window.location.pathname
+var socket = new ReconnectingWebSocket(endpoint)
+
+socket.onmessage = function(e) {
+        var data = e.data;
+        console.log(data)
+        var valueData = JSON.parse(data)
+    };
+
+socket.onopen = function(e){
+    console.log("message", e);
+    formData.submit(function(event){
+     event.preventDefault();
+     var valueText = valueInput.val();
+    console.log(valueText)
+     var finalData = {
+      'value': valueText
+     }
+     console.log(finalData)
+     socket.send(JSON.stringify(finalData));
+     formData[0].reset();
+    });
+
+}
+socket.onerror = function(e){
+    console.log("message", e);
+}
+socket.onclose = function(e){
+    console.log("message", e);
+}
+</script>
+{% endblock %}
